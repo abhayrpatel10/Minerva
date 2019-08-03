@@ -10,6 +10,12 @@ app=Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+@app.route("/",methods=['GET'])
+@cross_origin()
+def home():
+    s="Routes  1) GET /categories --returns a list of categories to choose from \n 2)POST /data -body json  categories:[list of categories]"
+    return jsonify(s)
+
 @app.route("/data",methods=['POST'])
 @cross_origin()
 def data():
